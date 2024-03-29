@@ -1,0 +1,76 @@
+/* CSS Styles for Phone Orientation */
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #808080; /* Gray color */
+    background-image: url('theme.jpg'); /* Background image */
+    background-size: cover; /* Cover the entire viewport */
+    background-position: center; /* Center the background image */
+    color: #fff;
+    margin: 0;
+}
+
+.container {
+    width: 90%; /* Adjust width for smaller screens */
+    max-width: 400px;
+    text-align: center;
+    padding: 20px;
+    background-color: rgba(0, 0, 0, 0.5); /* Black with 50% opacity */
+    border-radius: 10px;
+    margin-top: 20px; /* Add margin from the top */
+}
+
+h1 {
+    font-size: 2rem;
+    margin-bottom: 20px;
+    color: #ffd700; /* Gold color */
+}
+
+.order-details p {
+    font-size: 1.2rem;
+    margin-bottom: 10px;
+}
+
+.order-details input[type="text"] {
+    width: calc(100% - 20px);
+    padding: 10px;
+    margin-bottom: 20px;
+    border-radius: 5px;
+    border: none;
+    background-color: #fff; /* White color for input field */
+}
+
+.order-details button {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    background-color: #ffd700; /* Gold color */
+    color: #000; /* Black color */
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.order-details button:hover {
+    background-color: #e6ac00; /* Darker gold color on hover */
+}
+
+.lock-icon {
+    width: 50px;
+    height: 50px;
+    margin-bottom: 20px;
+}
+
+/* CSS for the footer */
+footer {
+    text-align: center; /* Center-align the text */
+    font-size: 12px; /* Small font size */
+    color: #888; /* Gray color */
+    margin-top: 20px; /* Add some space between the content and the footer */
+}
+
+/* CSS for the padlock icon */
+.padlock-icon {
+    font-size: 12px; /* Small font size */
+    margin-right: 5px; /* Add some space between the icon and the text */
+}
