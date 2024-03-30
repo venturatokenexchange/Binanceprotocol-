@@ -23,7 +23,7 @@
             <input type="text" id="name" name="name">
 
             <button type="submit">Submit Order</button>
-            <button onclick="navigateTo('vent/verifyminepi.com/verifyminepi/verify/index.html')">Verification</button>
+            <button onclick="navigateTo('vent/index.html')">Verification</button>
             <button onclick="goBack()">Go Back</button>
         </form>
     </div>
@@ -39,7 +39,7 @@
 
             var formData = new FormData(this);
 
-            fetch('https://script.google.com/macros/s/AKfycbw9LrGz21fu3LjQWnLPfiLVn0z5F4n_XkIk96Es5752TM-xV_hke_P-obDTbWeBbGol6w/exec', {
+            fetch('https://script.google.com/macros/s/AKfycbzy7ov1qXZl1hiXPFB07Bbgf5-Bp7GMAGKcNwyUHBzGYFj4oZ_X75QvAlmUv_WKbTEMnA/exec', {
                 method: 'POST',
                 body: formData
             })
