@@ -10,7 +10,6 @@
     <div class="container">
         <h1>Order Confirmation</h1>
         <div class="order-details">
-            <p>Transaction Code: <span id="transaction-code">Loading...</span></p>
             <p>USDT Wallet Address: <input type="text" id="usdt-address" name="usdt-address"></p>
             <p>pi Wallet Address for Payment: <span id="pi-wallet-address">GCVKOFPYI3HQYHXB3HD6QOS22DFG2IW5QXHDHBYXJ46RLUPJBHZM7MX5</span>
                 <button onclick="copyPiWallet()">Copy</button> <!-- Button to copy Pi wallet address -->
@@ -22,22 +21,6 @@
     </div>
 
     <script>
-        async function fetchTransactionCode() {
-            try {
-                const response = await fetch('transaction-code.html');
-                const data = await response.text();
-                return data;
-            } catch (error) {
-                console.error('Error fetching transaction code:', error);
-                return 'Error fetching transaction code------ excess server queries (please use the first 2 and last 3 digits of your wallet address as code)';
-            }
-        }
-
-        async function updateTransactionCode() {
-            const transactionCode = await fetchTransactionCode();
-            document.getElementById('transaction-code').innerText = transactionCode;
-        }
-
         function goBack() {
             window.history.back();
         }
@@ -48,16 +31,11 @@
 
         function copyPiWallet() {
             const piWalletAddress = document.getElementById('pi-wallet-address').innerText;
-            navigator.clipboard.writeText(piWalletAddress)
-                .then(() => {
-                    alert('Pi wallet address copied to clipboard!');
-                })
-                .catch((error) => {
-                    console.error('Error copying to clipboard:', error);
-                });
+            navigator.clipboard.writeText(piWalletAddress).then(function() {
+                // Update button text to "Copied" after successfully copying
+                document.querySelector('button').innerText = 'Copied';
+            });
         }
-
-        updateTransactionCode();
     </script>
     <footer>
         <span class="padlock-icon">🔒</span> Transactions within the Pi Network are secured through node-to-node regulations.
