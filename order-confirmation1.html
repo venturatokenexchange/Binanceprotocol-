@@ -12,15 +12,16 @@
         <div class="order-details">
             <p>Transaction Code: <span id="transaction-code">Loading...</span></p>
             <p>USDT Wallet Address: <input type="text" id="usdt-address" name="usdt-address"></p>
-            <p>pi Wallet Address for Payment: <span id="pi-wallet-address">GCVKOFPYI3HQYHXB3HD6QOS22DFG2IW5QXHDHBYXJ46RLUPJBHZM7MX5</span></p>
-            <button onclick="goBack()">Back</button> <!-- Back button added here -->
+            <p>pi Wallet Address for Payment: <span id="pi-wallet-address">GCVKOFPYI3HQYHXB3HD6QOS22DFG2IW5QXHDHBYXJ46RLUPJBHZM7MX5</span>
+                <button onclick="copyPiWallet()">Copy</button> <!-- Button to copy Pi wallet address -->
+            </p>
+            <button onclick="goBack()">Back</button>
             <button onclick="nextStep()">Next</button>
         </div>
         <p class="warning">Note: The minimum transactable amount of Pi is 300. Orders below this amount may take 24-48 hours for payment processing.</p>
     </div>
 
     <script>
-        // Function to fetch the transaction code from the file
         async function fetchTransactionCode() {
             try {
                 const response = await fetch('transaction-code.html');
@@ -32,30 +33,35 @@
             }
         }
 
-        // Function to update the transaction code in the HTML
         async function updateTransactionCode() {
             const transactionCode = await fetchTransactionCode();
             document.getElementById('transaction-code').innerText = transactionCode;
         }
 
-        // Function to go back in the browser's history
         function goBack() {
             window.history.back();
         }
 
-        // Function to proceed to the next step
         function nextStep() {
-            // Add logic to handle the next step
-            // For now, let's navigate to the submit-payment page
             window.location.href = 'order-submission.html';
         }
 
-        // Call the updateTransactionCode function when the page loads
+        function copyPiWallet() {
+            const piWalletAddress = document.getElementById('pi-wallet-address').innerText;
+            navigator.clipboard.writeText(piWalletAddress)
+                .then(() => {
+                    alert('Pi wallet address copied to clipboard!');
+                })
+                .catch((error) => {
+                    console.error('Error copying to clipboard:', error);
+                });
+        }
+
         updateTransactionCode();
     </script>
-    <!-- Footer with the phrase and padlock icon -->
     <footer>
         <span class="padlock-icon">🔒</span> Transactions within the Pi Network are secured through node-to-node regulations.
         <span class="padlock-icon"></span> Do not cancel app until payment is done to avoid loss.
+    </footer>
 </body>
 </html>
