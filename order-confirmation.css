@@ -74,3 +74,7 @@ footer {
     font-size: 12px; /* Small font size */
     margin-right: 5px; /* Add some space between the icon and the text */
 }
+
+.warning {
+    color: red; /* Change the color to red */
+}

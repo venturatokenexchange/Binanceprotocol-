@@ -7,14 +7,17 @@
     <link rel="stylesheet" href="indexcss.css">
 </head>
 <body>
+    <div class="background-image"></div>
     <div class="container">
         <img src="logo.jpg" alt="Ventura Logo" class="logo">
         <h1>Ventura</h1>
-        <div id="countdown">Countdown: 10:00</div>
+        <div class="countdown-section">
+            <div id="countdown">Countdown: <span id="countdown-timer">Calculating...</span></div>
+        </div>
         <div class="options">
-            <button onclick="navigateTo('pre-listed.html')">Pre-listed Tokens</button>
-            <button onclick="navigateTo('listed.html')">Listed Tokens</button>
-            <button onclick="navigateTo('de-listed.html')">De-listed Tokens</button>
+            <a href="pre-listed.html" class="button">Pre-listed Tokens</a>
+            <a href="#" class="button">Listed Tokens</a>
+            <a href="#" class="button">De-listed Tokens</a>
         </div>
     </div>
 
@@ -22,6 +25,37 @@
         function navigateTo(page) {
             window.location.href = page;
         }
+
+        // Countdown to the 30th of next month
+        function countdownToNextMonth() {
+            const now = new Date();
+            const currentMonth = now.getMonth();
+            let nextMonth = currentMonth + 1;
+            if (nextMonth === 12) {
+                nextMonth = 0; // January (0 index) of next year
+            }
+            const year = now.getFullYear() + (nextMonth === 0 ? 1 : 0); // Increment year if next month is January of next year
+            const nextMonthDate = new Date(year, nextMonth, 30);
+            const countdownElement = document.getElementById('countdown-timer');
+            const timer = setInterval(() => {
+                const timeDiff = nextMonthDate - new Date();
+                if (timeDiff <= 0) {
+                    clearInterval(timer);
+                    countdownElement.textContent = 'Expired';
+                } else {
+                    const days = Math.floor(timeDiff / (1000 * 60 * 60 * 24));
+                    const hours = Math.floor((timeDiff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                    const minutes = Math.floor((timeDiff % (1000 * 60 * 60)) / (1000 * 60));
+                    const seconds = Math.floor((timeDiff % (1000 * 60)) / 1000);
+                    countdownElement.textContent = `${days}d ${hours}h ${minutes}m ${seconds}s`;
+                }
+            }, 1000);
+        }
+
+        // Call the countdown function when the page loads
+        window.onload = function() {
+            countdownToNextMonth();
+        };
     </script>
 </body>
 </html>

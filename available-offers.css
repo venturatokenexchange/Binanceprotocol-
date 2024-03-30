@@ -1,24 +1,44 @@
 body {
     font-family: Arial, sans-serif;
-    background-color: #000; /* Fallback color */
-    background-image: url('coliseum.jpg'); /* Background image */
-    background-size: cover; /* Cover the entire viewport */
-    background-position: center; /* Center the background image */
+    background-color: #000;
+    background-image: url('coliseum.jpg');
+    background-size: cover;
+    background-position: center;
     color: #fff;
+}
+
+.back-button {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    background-color: #ffd700;
+    color: #000;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.back-button:hover {
+    background-color: #e6ac00;
 }
 
 .container {
     max-width: 800px;
-    margin: 50px auto;
+    margin: 100px auto;
     text-align: center;
     padding: 20px;
-    background-color: rgba(0, 0, 0, 0.5); /* Black with 50% opacity */
+    background-color: rgba(0, 0, 0, 0.7); /* Slightly transparent background */
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5); /* Drop shadow */
 }
 
 h1 {
-    font-size: 2rem;
-    margin-bottom: 20px;
-    color: #ffd700; /* Gold color */
+    font-size: 2.5rem;
+    margin-bottom: 30px;
+    color: #ffd700;
 }
 
 .offer-list {
@@ -29,24 +49,70 @@ h1 {
 
 .offer {
     margin-bottom: 20px;
+    background-color: rgba(255, 255, 255, 0.2); /* Slightly transparent background for offers */
+    padding: 10px;
+    border-radius: 5px;
+    box-shadow: 0 0 5px rgba(255, 255, 255, 0.2); /* Slight glow effect */
 }
 
 .offer p {
     font-size: 1.2rem;
     margin-bottom: 10px;
+    color: #ffd700;
 }
 
 .offer button {
     padding: 10px 20px;
     border: none;
     border-radius: 5px;
-    background-color: #ffd700; /* Gold color */
-    color: #000; /* Black color */
+    background-color: #ffd700;
+    color: #000;
     font-size: 1rem;
     cursor: pointer;
     transition: background-color 0.3s ease;
 }
 
 .offer button:hover {
-    background-color: #e6ac00; /* Darker gold color on hover */
+    background-color: #e6ac00;
+}
+
+.pi-conversion {
+    margin-top: 50px;
+}
+
+.pi-conversion label {
+    display: block;
+    font-size: 1.2rem;
+    margin-bottom: 10px;
+    color: #ffd700;
+}
+
+.pi-conversion input {
+    padding: 8px;
+    width: 200px;
+    font-size: 1rem;
+    border: 2px solid #ffd700;
+    border-radius: 5px;
+    background-color: transparent;
+    color: #fff;
+}
+
+.pi-conversion button {
+    margin-top: 10px;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    background-color: #ffd700;
+    color: #000;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.pi-conversion button:hover {
+    background-color: #e6ac00;
+}
+
+#sell-button-container {
+    margin-top: 20px;
 }

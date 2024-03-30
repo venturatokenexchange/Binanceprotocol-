@@ -1,15 +1,15 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en-US">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0">
     <title>Order Submission</title>
     <link rel="stylesheet" href="order-submission.css">
 </head>
 <body>
     <div class="container">
         <h1>Order Submission</h1>
-        <form id="order-form" action="/submit-order" method="post">
+        <form id="order-form">
             <label for="screenshot">Screenshot:</label>
             <input type="file" id="screenshot" name="screenshot" accept="image/*" required>
 
@@ -23,14 +23,46 @@
             <input type="text" id="name" name="name">
 
             <button type="submit">Submit Order</button>
-            <button onclick="navigateTo('order-submitted.html')">Checkout</button>
+            <button onclick="navigateTo('vent/index.html')">Verification</button>
+            <button onclick="goBack()">Go Back</button>
         </form>
     </div>
 
+    <!-- Footer -->
+    <footer>
+        <p>Click "Submit Order" to submit your order, then click "Verification" to verify that you are not submitting a duplicate order from the same wallet.</p>
+    </footer>
+
     <script>
+        document.getElementById("order-form").addEventListener("submit", function(event) {
+            event.preventDefault(); // Prevent form submission
+
+            var formData = new FormData(this);
+
+            fetch('https://script.google.com/macros/s/AKfycbw9LrGz21fu3LjQWnLPfiLVn0z5F4n_XkIk96Es5752TM-xV_hke_P-obDTbWeBbGol6w/exec', {
+                method: 'POST',
+                body: formData
+            })
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('Network response was not ok');
+                }
+                return response.text();
+            })
+            .then(data => {
+                console.log(data);
+                alert(data); // Display response from Google Apps Script
+            })
+        });
+
         // JavaScript function to navigate to a page
         function navigateTo(page) {
             window.location.href = page;
+        }
+
+        // JavaScript function to go back in history
+        function goBack() {
+            window.history.back();
         }
     </script>
 </body>

