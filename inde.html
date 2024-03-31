@@ -5,44 +5,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Ventura - Token exchange</title>
     <link rel="stylesheet" href="indexcss.css">
-    <style>
-        /* Clock Animation */
-        .clock {
-            font-family: Arial, sans-serif;
-            font-size: 24px;
-            font-weight: bold;
-            text-align: center;
-            color: #fff;
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
-            animation: rotate 60s linear infinite;
-        }
-
-        @keyframes rotate {
-            from {
-                transform: rotate(0deg);
-            }
-            to {
-                transform: rotate(360deg);
-            }
-        }
-
-        /* Digital Clock Style */
-        #digital-clock {
-            font-family: Arial, sans-serif;
-            font-size: 24px;
-            font-weight: bold;
-            text-align: center;
-            color: #fff;
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
-        }
-    </style>
 </head>
 <body>
     <div class="background-image"></div>
     <div class="container">
         <img src="logo.jpg" alt="Ventura Logo" class="logo">
         <h1>Ventura</h1>
-        <div id="digital-clock">Countdown: <span id="countdown-timer">Calculating...</span></div>
+        <div class="countdown-section">
+            <div id="countdown">Countdown: <span id="countdown-timer">Calculating...</span></div>
+        </div>
         <div class="options">
             <a href="pre-listed.html" class="button">Pre-listed Tokens</a>
             <a href="#" class="button">Listed Tokens</a>
