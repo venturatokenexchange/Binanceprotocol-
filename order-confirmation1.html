@@ -10,36 +10,24 @@
     <div class="container">
         <h1>Order Confirmation</h1>
         <div class="order-details">
-            <p>USDT Wallet Address: <input type="text" id="usdt-address" name="usdt-address"></p>
-            <p>pi Wallet Address for Payment: <span id="pi-wallet-address">GCVKOFPYI3HQYHXB3HD6QOS22DFG2IW5QXHDHBYXJ46RLUPJBHZM7MX5</span>
-                <button onclick="copyPiWallet()">Copy</button> <!-- Button to copy Pi wallet address -->
-            </p>
-            <button onclick="goBack()">Back</button>
-            <button onclick="nextStep()">Next</button>
+            <p>USDT Wallet Address:</p>
+            <input type="text" id="usdt-address" name="usdt-address">
+            <p class="pi-wallet-label">pi Wallet Address for Payment:</p>
+            <div class="pi-wallet-container">
+                <span id="pi-wallet-address">GCVKOFPYI3HQYHXB3HD6QOS22DFG2IW5QXHDHBYXJ46RLUPJBHZM7MX5</span>
+                <button onclick="copyPiWallet()">Copy</button>
+            </div>
+            <div class="button-container">
+                <button onclick="goBack()">Back</button>
+                <button onclick="nextStep()">Next</button>
+            </div>
         </div>
         <p class="warning">Note: The minimum transactable amount of Pi is 300. Orders below this amount may take 24-48 hours for payment processing.</p>
     </div>
-
-    <script>
-        function goBack() {
-            window.history.back();
-        }
-
-        function nextStep() {
-            window.location.href = 'order-submission.html';
-        }
-
-        function copyPiWallet() {
-            const piWalletAddress = document.getElementById('pi-wallet-address').innerText;
-            navigator.clipboard.writeText(piWalletAddress).then(function() {
-                // Update button text to "Copied" after successfully copying
-                document.querySelector('button').innerText = 'Copied';
-            });
-        }
-    </script>
     <footer>
         <span class="padlock-icon">🔒</span> Transactions within the Pi Network are secured through node-to-node regulations.
         <span class="padlock-icon"></span> Do not cancel app until payment is done to avoid loss.
     </footer>
+    <script src="order-confirmation.js"></script>
 </body>
 </html>
