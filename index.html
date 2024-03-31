@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Loading...</title>
+    <link rel="stylesheet" href="inde.css">
+    <!-- Redirect to index page after 3 seconds -->
+    <script>
+        setTimeout(function() {
+            window.location.href = "index.html";
+        }, 4000); // Redirect after 3 seconds (3000 milliseconds)
+    </script>
+</head>
+<body>
+    <div class="loading-container">
+        <img src="logo.jpg" alt="Logo" class="logo">
+        <div class="loading-text">Loading...</div>
+        <div class="loading-spinner"></div>
+    </div>
+</body>
+</html>
