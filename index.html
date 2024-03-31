@@ -42,7 +42,7 @@
     <div class="container">
         <img src="logo.jpg" alt="Ventura Logo" class="logo">
         <h1>Ventura</h1>
-        <div id="digital-clock"></div>
+        <div id="digital-clock">Countdown: <span id="countdown-timer">Calculating...</span></div>
         <div class="options">
             <a href="pre-listed.html" class="button">Pre-listed Tokens</a>
             <a href="#" class="button">Listed Tokens</a>
@@ -65,7 +65,7 @@
             }
             const year = now.getFullYear() + (nextMonth === 0 ? 1 : 0); // Increment year if next month is January of next year
             const nextMonthDate = new Date(year, nextMonth, 30);
-            const countdownElement = document.getElementById('digital-clock');
+            const countdownElement = document.getElementById('countdown-timer');
             const timer = setInterval(() => {
                 const timeDiff = nextMonthDate - new Date();
                 if (timeDiff <= 0) {
