@@ -1,7 +1,7 @@
 /* CSS Styles for Phone Orientation */
 
 body {
-    font-family: Arial, sans-serif;
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; /* Change font family */
     background-color: #808080; /* Gray color */
     background-image: url('theme.jpg'); /* Background image */
     background-size: cover; /* Cover the entire viewport */
@@ -59,6 +59,14 @@ h1 {
     width: 50px;
     height: 50px;
     margin-bottom: 20px;
+}
+
+.pi-wallet-container span {
+    font-size: 1rem; /* Adjust font size for Pi wallet address */
+    font-family: "Courier New", Courier, monospace; /* Change font family */
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
 }
 
 /* CSS for the footer */
