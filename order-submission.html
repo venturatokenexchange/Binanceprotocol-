@@ -13,16 +13,16 @@
             <label for="screenshot">Screenshot:</label>
             <input type="file" id="screenshot" name="screenshot" accept="image/*" required>
 
-            <label for="transaction-code">Transaction Code:</label>
+            <label for="transaction-code">Transaction Code (Amount of Pi sent + Pi Wallet):</label>
             <input type="text" id="transaction-code" name="transactionCode" required>
 
-            <label for="affiliate-link">Affiliate Link:</label>
+            <label for="affiliate-link">Affiliate Link (Optional):</label>
             <input type="text" id="affiliate-link" name="affiliateLink">
 
             <label for="name">Name (Optional):</label>
             <input type="text" id="name" name="name">
 
-            <button type="submit">Submit Order</button>
+            <button type="submit" id="submit-btn">Submit Order</button>
             <button onclick="navigateTo('vent/verifyminepi.com/verifyminepi/verify/ventindex.html')">Verification</button>
             <button onclick="goBack()">Go Back</button>
         </form>
@@ -47,12 +47,13 @@
                 if (!response.ok) {
                     throw new Error('Network response was not ok');
                 }
-                return response.text();
+                document.getElementById("submit-btn").innerText = "Submitted"; // Change button text to "Submitted"
+                // return response.text(); // No need for response text handling
             })
-            .then(data => {
-                console.log(data);
-                alert(data); // Display response from Google Apps Script
-            })
+            .catch(error => {
+                console.error('Error:', error);
+                alert('Error submitting the form. Please try again.'); // Alert user in case of error
+            });
         });
 
         // JavaScript function to navigate to a page
