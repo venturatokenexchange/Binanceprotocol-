@@ -25,6 +25,16 @@
                 transform: rotate(360deg);
             }
         }
+
+        /* Digital Clock Style */
+        #digital-clock {
+            font-family: Arial, sans-serif;
+            font-size: 24px;
+            font-weight: bold;
+            text-align: center;
+            color: #fff;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        }
     </style>
 </head>
 <body>
@@ -32,7 +42,7 @@
     <div class="container">
         <img src="logo.jpg" alt="Ventura Logo" class="logo">
         <h1>Ventura</h1>
-        <div class="clock">⏰</div>
+        <div id="digital-clock"></div>
         <div class="options">
             <a href="pre-listed.html" class="button">Pre-listed Tokens</a>
             <a href="#" class="button">Listed Tokens</a>
@@ -55,7 +65,7 @@
             }
             const year = now.getFullYear() + (nextMonth === 0 ? 1 : 0); // Increment year if next month is January of next year
             const nextMonthDate = new Date(year, nextMonth, 30);
-            const countdownElement = document.getElementById('countdown-timer');
+            const countdownElement = document.getElementById('digital-clock');
             const timer = setInterval(() => {
                 const timeDiff = nextMonthDate - new Date();
                 if (timeDiff <= 0) {
