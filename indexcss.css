@@ -8,6 +8,7 @@
 body {
     font-family: Arial, sans-serif;
     color: #fff;
+    background-color: #222; /* Dark background color */
 }
 
 .container {
@@ -38,20 +39,24 @@ h1 {
     margin-bottom: 30px;
 }
 
-#countdown {
-    font-size: 1.5rem;
+#digital-clock {
+    font-family: Arial, sans-serif;
+    font-size: 24px;
+    font-weight: bold;
+    text-align: center;
+    color: #fff;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
 }
 
 .options {
     display: flex;
     justify-content: center;
-    flex-wrap: wrap; /* Allow buttons to wrap on smaller screens */
-    gap: 10px; /* Add spacing between buttons */
 }
 
 .button {
     display: inline-block;
     padding: 12px 24px;
+    margin: 0 10px;
     border: none;
     border-radius: 20px;
     font-size: 1.2rem;
@@ -60,7 +65,6 @@ h1 {
     color: #000; /* Black text */
     text-decoration: none;
     transition: background-color 0.3s ease;
-    flex: 0 0 auto; /* Ensure buttons don't shrink */
 }
 
 .button:hover {
@@ -78,23 +82,4 @@ h1 {
     background-position: center; /* Center the background image */
     opacity: 0.5; /* Adjust opacity */
     z-index: -1; /* Behind other elements */
-}
-
-.clock {
-    font-family: Arial, sans-serif;
-    font-size: 24px;
-    font-weight: bold;
-    text-align: center;
-    color: #fff;
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
-    animation: rotate 60s linear infinite;
-}
-
-@keyframes rotate {
-    from {
-        transform: rotate(0deg);
-    }
-    to {
-        transform: rotate(360deg);
-    }
 }
