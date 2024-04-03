@@ -6,11 +6,29 @@ const bodyParser = require('body-parser');
 const app = express();
 const PORT = process.env.PORT || 4000;
 
+// Define your Telegram bot's access token
+const TELEGRAM_BOT_TOKEN = '6798741454:AAEzt_Obo3UNkGvxHbkPCZFAyLlAYXtAnBw
+';
+
+// Middleware function to verify the Telegram bot's access token
+function verifyTelegramBotToken(req, res, next) {
+    const requestToken = req.headers['authorization']; // Assuming the bot's access token is passed in the 'Authorization' header
+
+    if (!requestToken || requestToken !== `Bearer ${TELEGRAM_BOT_TOKEN}`) {
+        return res.status(401).send('Unauthorized');
+    }
+
+    next();
+}
+
 // Serve static files from the 'public' directory
 app.use(express.static(path.join(__dirname, 'public')));
 
 // Parse URL-encoded bodies (as sent by HTML forms)
 app.use(bodyParser.urlencoded({ extended: false }));
+
+// Use the verifyTelegramBotToken middleware for all routes
+app.use(verifyTelegramBotToken);
 
 // Function to generate a random alphanumeric string
 function generateRandomString(length) {
