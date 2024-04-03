@@ -1,7 +1,8 @@
 body {
-    background-color: #f0f0f0; /* Light gray background */
+    background-color: #000; /* Black background */
     font-family: Arial, sans-serif;
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
     height: 100vh;
@@ -15,11 +16,20 @@ body {
 .logo {
     width: 150px; /* Adjust size as needed */
     height: 150px; /* Adjust size as needed */
+}
+
+.loading-widget {
+    border: 4px solid #fff; /* White border */
+    border-top: 4px solid transparent; /* Transparent top border */
+    border-radius: 50%; /* Make it circular */
+    width: 50px; /* Adjust size as needed */
+    height: 50px; /* Adjust size as needed */
     animation: spin 1s linear infinite; /* Rotate animation */
 }
 
 .loading-text {
     font-size: 24px;
+    color: #fff; /* White text */
     margin-top: 20px;
 }
 
